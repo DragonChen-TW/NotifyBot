@@ -1,5 +1,7 @@
+OUTPUT = bin
+
 default: run
 run:
 	go run cmd/run/run.go
 build:
-	go build -o run cmd/run/run.go
+	go build -o $(OUTPUT)/run cmd/run/run.go
