@@ -10,7 +10,7 @@ A collection of bots that send notification for myself. The task is mostly compo
 - [ ] Enable generating static report by CI/CD
 
 ### Crawler
-- [ ] Crawl web data
+- [V] Crawl web data
 - [ ] Save data locally or through db (e.g. MongoDB, FireBase)
 - [ ] Routinely collect historical data
 
