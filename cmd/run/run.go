@@ -8,4 +8,5 @@ import "github.com/dragonchen-tw/NotifyBot/pkg/fetch"
 
 func main() {
 	fetch.Fetch()
+	fetch.DynamicFetch()
 }
