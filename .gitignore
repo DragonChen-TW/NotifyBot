@@ -1,6 +1,7 @@
 # Porject specific
 # Output of the built executable
 bin/
+temp/
 
 # Mac OS X files
 .DS_Store
