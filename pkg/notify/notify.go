@@ -21,12 +21,12 @@ func Hello(w http.ResponseWriter, req *http.Request) {
 }
 
 func LINE() {
-    err := godotenv.Load()
-    if err != nil {
-        log.Fatal("Error loading .env file")
-    } else {
-    fmt.Println("File .env was loaded.")
-    }
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	} else {
+		fmt.Println("File .env was loaded.")
+	}
 
 	channelSecret := os.Getenv("LINE_CHANNEL_SECRET")
 	bot, err := messaging_api.NewMessagingApiAPI(
