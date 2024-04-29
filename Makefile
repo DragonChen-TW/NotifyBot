@@ -7,4 +7,4 @@ serve:
 	go run cmd/serve/serve.go
 build:
 	go build -o $(OUTPUT)/run cmd/run/run.go
-	go build -o $(OUTPUT)/run cmd/serve/serve.go
+	go build -o $(OUTPUT)/serve cmd/serve/serve.go

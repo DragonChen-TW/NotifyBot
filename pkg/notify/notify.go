@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/joho/godotenv"
 	"github.com/line/line-bot-sdk-go/v8/linebot/messaging_api"
 	"github.com/line/line-bot-sdk-go/v8/linebot/webhook"
 )
@@ -15,7 +16,18 @@ import (
 // Title:
 // Date:	2024/04/28
 
+func Hello(w http.ResponseWriter, req *http.Request) {
+	fmt.Fprintf(w, "Hello, %s!", req.URL.Path[1:])
+}
+
 func LINE() {
+    err := godotenv.Load()
+    if err != nil {
+        log.Fatal("Error loading .env file")
+    } else {
+    fmt.Println("File .env was loaded.")
+    }
+
 	channelSecret := os.Getenv("LINE_CHANNEL_SECRET")
 	bot, err := messaging_api.NewMessagingApiAPI(
 		os.Getenv("LINE_CHANNEL_TOKEN"),
@@ -24,6 +36,7 @@ func LINE() {
 		log.Fatal(err)
 	}
 
+	http.HandleFunc("/", Hello)
 	// Setup HTTP Server for receiving requests from LINE platform
 	http.HandleFunc("/callback", func(w http.ResponseWriter, req *http.Request) {
 		log.Println("/callback called...")
@@ -90,7 +103,7 @@ func LINE() {
 	// For actual use, you must support HTTPS by using `ListenAndServeTLS`, a reverse proxy or something else.
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "5000"
+		port = "7077"
 	}
 	fmt.Println("http://localhost:" + port + "/")
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
